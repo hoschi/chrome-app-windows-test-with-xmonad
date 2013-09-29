@@ -3,6 +3,8 @@
 Demonstrates transitioning the window into minimized, maximized, fullscreen
 and hidden states. Includes HTML5 requestFullscreen and app.window.fullscreen().
 
+Tried to get a floating window within [Xmonad](http://xmonad.org), which is resizable and controllable by code. Maximize and minimize medhots doesn't work :(
+
 ## Try it: [Window State Sample](https://chrome.google.com/webstore/detail/window-state-sample/hcbhfbnaaancmblfhdknlnojpafjohbi)
 
 ## Resources

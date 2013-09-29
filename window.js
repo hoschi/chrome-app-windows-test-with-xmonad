@@ -32,12 +32,14 @@ function createNewWindow(optionsDictionary) {
 
     // Set new window to be offset from current window.
     var bounds = chrome.app.window.current().getBounds();
-    bounds.left = (bounds.left + newWindowOffset) % (screen.width - bounds.width);
-    bounds.top = (bounds.top + newWindowOffset) % (screen.height - bounds.height);
-    optionsDictionary.left = bounds.left;
-    optionsDictionary.top = bounds.top;
-    optionsDictionary.width = bounds.width;
-    optionsDictionary.height = bounds.height;
+    bounds.left = (bounds.left + newWindowOffset);
+    bounds.top = (bounds.top + newWindowOffset);
+
+    optionsDictionary.bounds = {};
+    optionsDictionary.bounds.left = bounds.left;
+    optionsDictionary.bounds.top = bounds.top;
+    optionsDictionary.bounds.width = bounds.width;
+    optionsDictionary.bounds.height = bounds.height;
 
     chrome.app.window.create('window.html', optionsDictionary, callback);
 };
@@ -78,11 +80,16 @@ $('#fullscreen').onclick = function(e) {
 };
 
 $('#maximize').onclick = function(e) {
-    setTimeout(chrome.app.window.current().maximize, $('#delay-slider').value);
+	// doesn't work with xmonad
+    //setTimeout(chrome.app.window.current().maximize, $('#delay-slider').value);
+
+	chrome.app.window.current().moveTo(20, 20);
 };
 
 $('#minimize').onclick = function(e) {
-    setTimeout(chrome.app.window.current().minimize, $('#delay-slider').value);
+	// doesn't work with xmonad
+    //setTimeout(chrome.app.window.current().minimize, $('#delay-slider').value);
+	chrome.app.window.current().resizeTo(400, 500);
 };
 
 $('#restore').onclick = function(e) {
@@ -90,7 +97,11 @@ $('#restore').onclick = function(e) {
 };
 
 $('#hide').onclick = function(e) {
-    setTimeout(chrome.app.window.current().hide, $('#delay-slider').value);
+	var value;
+
+	value = $('#delay-slider').value;
+    setTimeout(chrome.app.window.current().hide, value);
+    setTimeout(chrome.app.window.current().show, value + 1000);
 };
 
 $('#show').onclick = function(e) {
@@ -159,6 +170,9 @@ function updateCurrentStateReadout() {
     $('#wasFullscreen').checked = wasFullscreen.length > 0;
     $('#wasMaximized').checked = wasMaximized.length > 0;
     $('#wasMinimized').checked = wasMinimized.length > 0;
+	var bounds = chrome.app.window.current().getBounds();
+    $('#positionAndSize').innerHTML = "left: " + bounds.left + " top: " + bounds.top +
+		" width: " + bounds.width + " height: " + bounds.height;
 }
 // Update window state display on bounds change, but also on regular interval
 // just to be paranoid.
