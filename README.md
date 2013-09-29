@@ -9,8 +9,6 @@ resizable and controllable by code. Maximize and minimize medhots doesn't work
 
 Positioning is not accurate with xinerama enabled. Sometimes the window gets 'teleported' to the first screen.
 
-## Try it: [Window State Sample](https://chrome.google.com/webstore/detail/window-state-sample/hcbhfbnaaancmblfhdknlnojpafjohbi)
-
 ## Resources
 
 * [Fullscreen Specification](http://dvcs.w3.org/hg/fullscreen/raw-file/tip/Overview.html)
