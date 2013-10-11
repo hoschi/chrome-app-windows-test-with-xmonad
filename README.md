@@ -13,3 +13,7 @@ Positioning is not accurate with xinerama enabled. Sometimes the window gets 'te
 
 * [Fullscreen Specification](http://dvcs.w3.org/hg/fullscreen/raw-file/tip/Overview.html)
 * [Window](http://developer.chrome.com/trunk/apps/app.window.html)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/hoschi/chrome-app-windows-test-with-xmonad/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
